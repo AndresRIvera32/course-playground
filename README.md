@@ -11,8 +11,27 @@
 - kubernetes "Spring Cloud for Kubernetes"
 - ApiGateway "Spring Cloud for Kubernetes"
 
-# Docker commands:
+# Notes
+- Despite of the fact the project is built as a modular monolith each component can be deploy isolated one to the other using their respective DockerFile, Deployment and Service files
+- The database is deployed in a container sharing its resources using a file system but it can be replaced easily injecting the environment variables "DB_HOST" and "DB_DATABASE" in the deployment using i.e AWS RDS DB
+  - As a second option we can use a parameters service like aws parameter store to inject this kind of values "DB_HOST" and "DB_DATABASE" 
+- The credentials of the application like "DB" can be injected using a data security service like "AWS Secrets Manager"
+- Instead of using a oAuth2 service to authorize and authenticate we can link the apigateway with a identity platform like "AWS Cognito"
 
+# Run application Locally
+- We can run this application using a `Docker compose` file which is included in the root path that has already all of the services needed for each microservice
+- We can run ALSO using the deployments and services for each microservice running first the dependencies services like DATABASES, PERSISTENT VOLUMES and then the deployments and services
+- make sure to give enough permissions to spring cloud to kubernetes to communicate with
+  - `kubectl create clusterrolebinding admin --clusterrole=cluster-admin --serviceaccount=default:default`
+
+# Run Application in cloud
+- We have first to create the network, cluster and group of nodes in the cloud and then connect to the cluster and apply the *.yaml files located in the root
+- make sure to give enough permissions to spring cloud to kubernetes to communicate with
+  - `kubectl create clusterrolebinding admin --clusterrole=cluster-admin --serviceaccount=default:default`
+- connect with the cluster in aws
+  - `aws eks --region us-east-1 update-kubeconfig --name course-playground-cluster`
+
+# Docker commands:
 - docker ps : list all the containers
 - docker images: list all the images
 - docker build . : create the image
