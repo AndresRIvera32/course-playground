@@ -8,9 +8,21 @@ spring:
             - Path=/v1/api/users/**
           filters:
             - StripPrefix=1 # number of prefix that we have in out path in predicates
+        - id: msvc-users-actuator
+          uri: lb://msvc-users
+          predicates:
+            - Path=/v1/users/actuator/**
+          filters:
+            - StripPrefix=2 # number of prefix that we have in out path in predicates
         - id: msvc-courses
           uri: lb://msvc-courses
           predicates:
             - Path=/v1/api/courses/**
           filters:
             - StripPrefix=1 # number of prefix that we have in out path in predicates
+        - id: msvc-courses-actuator
+          uri: lb://msvc-users
+          predicates:
+            - Path=/v1/courses/actuator/**
+          filters:
+            - StripPrefix=2 # number of prefix that we have in out path in predicates

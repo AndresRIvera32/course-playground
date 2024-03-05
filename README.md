@@ -11,6 +11,14 @@
 - kubernetes "Spring Cloud for Kubernetes"
 - ApiGateway "Spring Cloud for Kubernetes"
 
+# Inventory of the infrastructure which can be make part of this application if is deployed in aws
+- ACM "amazon certificate manager" "TLS certificates"
+- Route 53 "we can create a domain here"
+- CloudFront (CDN)
+- ApiGateway
+- Cognito
+- S3 host the application
+
 # Notes
 - Despite of the fact the project is built as a modular monolith each component can be deploy isolated one to the other using their respective DockerFile, Deployment and Service files
 - The database is deployed in a container sharing its resources using a file system but it can be replaced easily injecting the environment variables "DB_HOST" and "DB_DATABASE" in the deployment using i.e AWS RDS DB
