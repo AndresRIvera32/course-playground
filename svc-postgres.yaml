@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: postgresdb #name of the host
+spec:
+  ports:
+    - port: 5432
+      protocol: TCP
+      targetPort: 5432 # port that will open in the container
+  selector: #here we select the pods based on the label
+    myApp: postgres # this name should match with the label 'selector' of the pod in the deployment
+  type: ClusterIP

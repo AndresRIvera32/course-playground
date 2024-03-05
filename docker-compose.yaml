@@ -1,0 +1,101 @@
+#this version will container all the yaml characteristics
+
+#IMPORTANT!!!
+#if we have all the containers in the same machine is USEFULL to use docker-compose and then
+#gather all the containers in a single file
+
+# first we need to have already created the images for each service
+#users -> docker build -t users . -f .\msvc-users\Dockerfile
+#courses -> docker build -t courses . -f .\msvc-courses\Dockerfile
+#then execute this command over the root file: docker-compose up -d
+
+#if we make a change in the dockerfiles we need to force the build: docker-compose up --build
+
+version: "3.9"
+services:
+  #if we want to keep the same name of the service we can define in 'container_name' as follows
+  mysqldb:
+    container_name: mysqldb
+    image: mysql:8
+    ports:
+      - "3308:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: sasa
+      MYSQL_DATABASE: msvc_users
+    volumes:
+      - data-mysql:/var/lib/mysql
+    restart: always
+    networks:
+      - spring
+
+  postgresdb:
+    container_name: postgresdb
+    image: postgres:14-alpine
+    ports:
+      - "5433:5432"
+    environment:
+      POSTGRES_PASSWORD: 12345
+      POSTGRES_DB: msvc_courses
+    volumes:
+      - data-postgres:/var/lib/postgresql/data
+    restart: always
+    networks:
+      - spring
+
+#if we want to keep the same name of the service we can define in 'container_name' as follows
+  msvc-users:
+    container_name: msvc-users
+    #if we want to use an exist image we use 'image' as below
+    image: andyrivera/users:latest
+    #image: users
+#    build:
+#      #context is where we are going to start the build of the image i.e docker build .
+#      context: ./
+#      dockerfile: ./msvc-users/Dockerfile
+
+    ports:
+      - "8001:8001"
+    #env_file: ./msvc-users/.env
+    environment:
+      PORT: 8001
+      DB_HOST: mysqldb:3306
+      DB_USERNAME: root
+      DB_PASSWORD: sasa
+      COURSES_URL: msvc-courses:8002
+    networks:
+      - spring
+    depends_on:
+      - mysqldb
+    restart: always
+
+  msvc-courses:
+    container_name: msvc-courses
+    #image: courses
+    #if we want to have the image from docker hub we use the repository
+    image: andyrivera/courses:latest
+#    build:
+#      #context is where we are going to start the build of the image i.e docker build .
+#      context: ./
+#      dockerfile: ./msvc-courses/Dockerfile
+    ports:
+      - "8002:8002"
+    #env_file: ./msvc-courses/.env
+    environment:
+      DB_HOST: postgresdb:5432
+    networks:
+      - spring
+    depends_on:
+      - postgresdb
+      - msvc-users
+    restart: always
+
+#if we want to have the same volume we can define a name as follows in 'name'
+volumes:
+  data-mysql:
+    name: data-mysql
+  data-postgres:
+    name: data-postgres
+networks:
+  spring:
+
+

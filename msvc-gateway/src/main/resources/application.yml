@@ -1,0 +1,16 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: msvc-users
+          uri: lb://msvc-users
+          predicates:
+            - Path=/v1/api/users/**
+          filters:
+            - StripPrefix=1 # number of prefix that we have in out path in predicates
+        - id: msvc-courses
+          uri: lb://msvc-courses
+          predicates:
+            - Path=/v1/api/courses/**
+          filters:
+            - StripPrefix=1 # number of prefix that we have in out path in predicates

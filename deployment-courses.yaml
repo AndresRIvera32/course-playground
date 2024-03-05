@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: msvc-courses
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: msvc-courses
+  template:
+    metadata:
+      labels:
+        app: msvc-courses
+    spec:
+      containers:
+        - image: andyrivera/courses:latest
+          name: courses
+          ports:
+            - containerPort: 8002
+          env:
+            - name: MY_POD_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+            - name: MY_POD_IP
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.podIP
+      #  - image: andyrivera/...:latest
+      #    name: container-name
+      #    ports:
+      #      - conatinerPort: 8003
