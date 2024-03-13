@@ -112,4 +112,8 @@ public class UserController {
         });
         return ResponseEntity.badRequest().body(errores);
     }
+    @GetMapping("/authorized")
+    public Map<String, Object> authorized(@RequestParam(name = "code") String code){
+        return Collections.singletonMap("code", code);
+    }
 }

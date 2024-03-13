@@ -12,12 +12,12 @@
 - ApiGateway "Spring Cloud for Kubernetes"
 
 # Inventory of the infrastructure which can be make part of this application if is deployed in aws
-- ACM "amazon certificate manager" "TLS certificates"
-- Route 53 "we can create a domain here"
-- CloudFront (CDN)
-- ApiGateway
-- Cognito
-- S3 host the application
+- ACM "amazon certificate manager" "TLS certificates" "security"
+- Route 53 "we can create a domain here" "DNS service"
+- CloudFront (CDN) "delivery of static content"
+- ApiGateway  "route and filter as a reverse proxy"
+- Cognito "identity platform which provides security 'authorization' and 'authentication' "
+- S3 host the application "object storage"
 
 # Notes
 - Despite of the fact the project is built as a modular monolith each component can be deploy isolated one to the other using their respective DockerFile, Deployment and Service files

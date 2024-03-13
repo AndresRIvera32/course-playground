@@ -15,11 +15,11 @@
   <packaging>pom</packaging>
 
 
-
   <modules>
     <module>msvc-users</module>
     <module>msvc-courses</module>
     <module>msvc-gateway</module>
+    <module>msvc-auth</module>
   </modules>
 
   <name>Archetype - course-playground</name>

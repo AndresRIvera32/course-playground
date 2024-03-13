@@ -1,0 +1,20 @@
+spring:
+  security:
+    oauth2:
+      #here we validate the token
+      resourceserver:
+        jwt:
+          issuer-uri: ${LB_AUTH_ISSUER_URI:http://127.0.0.1:9000}
+      client:
+        registration:
+          msvc-users-client:
+            provider: spring
+            client-id: users-client
+            client-secret: 12345
+            authorization-grant-type: authorization_code
+            redirect-uri: ${LB_USERS_URI:http://127.0.0.1:8001}/authorized
+            scope: read
+            client-name: msvc-users-client
+        provider:
+          spring: #here we authenticate with the oauth2 server
+            issuer-uri: ${LB_AUTH_ISSUER_URI:http://127.0.0.1:9000}
