@@ -1,5 +1,6 @@
 package com.springcloud.msvc.courses.services;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.springcloud.msvc.courses.models.User;
 import com.springcloud.msvc.courses.models.entity.Course;
 
@@ -10,7 +11,7 @@ public interface CourseService {
     List<Course> getAllCourses();
     Optional<Course> getCourseById(Long id);
     Optional<Course> getCourseByIdUsers(Long id);
-    Course save(Course Course);
+    Course save(Course Course) throws JsonProcessingException;
     void delete(Long id);
 
     void deleteCourseUserById(Long id);

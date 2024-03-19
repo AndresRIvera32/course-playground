@@ -6,10 +6,15 @@
 - Hibernate
 - Postgresql
 - MySQL
+- Kafka
 - Docker
 - Docker compose
-- kubernetes "Spring Cloud for Kubernetes"
+- Kubernetes "Spring Cloud for Kubernetes"
 - ApiGateway "Spring Cloud for Kubernetes"
+
+# Architectural patterns used
+- Transactional outbox pattern "msvc-eventuate"
+- Event driven architecture
 
 # Inventory of the infrastructure which can be make part of this application if is deployed in aws
 - ACM "amazon certificate manager" "TLS certificates" "security"
@@ -139,3 +144,15 @@ this command will give permissions to spring cloud to communicate with kubernete
 have a list updated of the availability of the pods. 
 - `kubectl create clusterrolebinding admin --clusterrole=cluster-admin --serviceaccount=default:default
 `
+
+
+# kafka commands
+
+command used to initialize zookeeper port 2181
+- `.\bin\windows\zookeeper-server-start.bat .\config\zookeeper.properties`
+command used to initialize kafka server port 9092
+- `.\bin\windows\kafka-server-start.bat .\config\server.properties`
+command used to create a kafka topic
+- `.\bin\windows\kafka-topics.bat --bootstrap-server localhost:9092 --create --topic topic-name -partitions 5 --replication-factor 1`
+command used to list topics
+- `.\bin\windows\kafka-topics.bat --bootstrap-server localhost:9092 --list`

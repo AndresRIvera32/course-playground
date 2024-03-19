@@ -3,9 +3,12 @@ package com.springcloud.msvc.courses.models.entity;
 import com.springcloud.msvc.courses.models.User;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
+import lombok.ToString;
+
 import java.util.ArrayList;
 import java.util.List;
 
+@ToString
 @Entity
 @Table(name = "courses")
 public class Course {

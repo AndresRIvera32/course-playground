@@ -20,6 +20,7 @@
     <module>msvc-courses</module>
     <module>msvc-gateway</module>
     <module>msvc-auth</module>
+    <module>msvc-eventuate</module>
   </modules>
 
   <name>Archetype - course-playground</name>

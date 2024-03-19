@@ -1,5 +1,6 @@
 package com.springcloud.msvc.courses.controllers;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.springcloud.msvc.courses.models.User;
 import com.springcloud.msvc.courses.models.entity.Course;
 import com.springcloud.msvc.courses.services.CourseService;
@@ -35,7 +36,7 @@ public class CourseController {
     }
 
     @PostMapping("/")
-    public ResponseEntity<?> create(@Valid @RequestBody Course Course, BindingResult result) {
+    public ResponseEntity<?> create(@Valid @RequestBody Course Course, BindingResult result) throws JsonProcessingException {
         if (result.hasErrors()) {
             return validate(result);
         }
@@ -44,7 +45,7 @@ public class CourseController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> edit(@Valid @RequestBody Course Course, BindingResult result, @PathVariable Long id) {
+    public ResponseEntity<?> edit(@Valid @RequestBody Course Course, BindingResult result, @PathVariable Long id) throws JsonProcessingException {
         if (result.hasErrors()) {
             return validate(result);
         }

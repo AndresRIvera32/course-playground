@@ -5,11 +5,13 @@
       <directory url="file://$PROJECT_DIR$/src/main/resources/archetype-resources" includeSubdirectories="true" />
     </excludeFromCompile>
     <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
       <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="msvc-courses" />
+        <module name="msvc-eventuate" />
         <module name="msvc-users" />
         <module name="msvc-auth" />
         <module name="msvc-gateway" />
@@ -20,6 +22,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="msvc-auth" options="-parameters" />
       <module name="msvc-courses" options="-parameters" />
+      <module name="msvc-eventuate" options="-parameters" />
       <module name="msvc-gateway" options="-parameters" />
       <module name="msvc-users" options="-parameters" />
     </option>
