@@ -148,11 +148,11 @@ have a list updated of the availability of the pods.
 
 # kafka commands
 
-command used to initialize zookeeper port 2181
-- `.\bin\windows\zookeeper-server-start.bat .\config\zookeeper.properties`
-command used to initialize kafka server port 9092
-- `.\bin\windows\kafka-server-start.bat .\config\server.properties`
-command used to create a kafka topic
-- `.\bin\windows\kafka-topics.bat --bootstrap-server localhost:9092 --create --topic topic-name -partitions 5 --replication-factor 1`
-command used to list topics
-- `.\bin\windows\kafka-topics.bat --bootstrap-server localhost:9092 --list`
+- command used to initialize zookeeper port 2181
+`.\bin\windows\zookeeper-server-start.bat .\config\zookeeper.properties`
+- command used to initialize kafka server port 9092
+`.\bin\windows\kafka-server-start.bat .\config\server.properties`
+- command used to create a kafka topic
+`.\bin\windows\kafka-topics.bat --bootstrap-server localhost:9092 --create --topic topic-name -partitions 5 --replication-factor 1`
+- command used to list topics
+`.\bin\windows\kafka-topics.bat --bootstrap-server localhost:9092 --list`
