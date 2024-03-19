@@ -6,7 +6,7 @@
 - Hibernate
 - Postgresql
 - MySQL
-- Kafka
+- Kafka Message Broker
 - Docker
 - Docker compose
 - Kubernetes "Spring Cloud for Kubernetes"
