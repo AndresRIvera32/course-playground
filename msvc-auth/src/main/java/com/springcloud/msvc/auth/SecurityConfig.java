@@ -4,6 +4,7 @@ import java.security.KeyPair;
 import java.security.KeyPairGenerator;
 import java.security.interfaces.RSAPrivateKey;
 import java.security.interfaces.RSAPublicKey;
+import java.util.Objects;
 import java.util.UUID;
 
 import com.nimbusds.jose.jwk.JWKSet;
@@ -175,6 +176,7 @@ public class SecurityConfig {
 
     @Bean
     public AuthorizationServerSettings authorizationServerSettings() {
+        Objects.equ
         return AuthorizationServerSettings.builder().build();
     }
 

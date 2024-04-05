@@ -12,9 +12,13 @@
 - Kubernetes "Spring Cloud for Kubernetes"
 - ApiGateway "Spring Cloud for Kubernetes"
 
+# General aspects
+- This project contains small projects which can also be deployed as a microservices
+
 # Architectural patterns used
 - Transactional outbox pattern "msvc-eventuate"
 - Event driven architecture
+- Microservices architecture
 
 # Inventory of the infrastructure which can be make part of this application if is deployed in aws
 - ACM "amazon certificate manager" "TLS certificates" "security"
