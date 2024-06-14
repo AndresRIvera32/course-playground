@@ -17,8 +17,7 @@
 
 # Architectural patterns used
 - Transactional outbox pattern "msvc-eventuate"
-- Event driven architecture
-- Microservices architecture
+- Event driven microservices architecture
 
 # Inventory of the infrastructure which can be make part of this application if is deployed in aws
 - ACM "amazon certificate manager" "TLS certificates" "security"
